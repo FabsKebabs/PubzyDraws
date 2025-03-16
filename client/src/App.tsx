@@ -1,20 +1,10 @@
 import { Switch, Route } from "wouter";
-import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
-import NotFound from "@/pages/not-found";
-import LoginPage from "@/pages/LoginPage";
-import HomePage from "@/pages/HomePage";
-import VideosPage from "@/pages/VideosPage";
-import GiveawaysPage from "@/pages/GiveawaysPage";
-import LeaderboardPage from "@/pages/LeaderboardPage";
-import ProfilePage from "@/pages/ProfilePage";
-import AdminDashboardPage from "@/pages/AdminDashboardPage";
 import { AuthProvider, useAuth } from "@/hooks/use-auth";
-import AdminPage from "@/pages/admin/AdminPage";
-import HelpCenter from "@/pages/HelpCenter";
-import TermsOfService from "@/pages/TermsOfService";
-import PrivacyPolicy from "@/pages/PrivacyPolicy";
+import LoginPage from "@/pages/LoginPage";
+import Canvas from "@/pages/canvas";
 
 function Router() {
   const { user, isLoading } = useAuth();
@@ -24,7 +14,7 @@ function Router() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-cyber-dark">
         <div className="animate-pulse text-cyber-blue text-2xl font-orbitron">
-          Loading NeonPlux...
+          Loading...
         </div>
       </div>
     );
@@ -36,16 +26,7 @@ function Router() {
 
   return (
     <Switch>
-      <Route path="/" component={HomePage} />
-      <Route path="/videos" component={VideosPage} />
-      <Route path="/giveaways" component={GiveawaysPage} />
-      <Route path="/leaderboard" component={LeaderboardPage} />
-      <Route path="/profile" component={ProfilePage} />
-      <Route path="/admin" component={AdminPage} />
-        <Route path="/help" component={HelpCenter} />
-        <Route path="/terms" component={TermsOfService} />
-        <Route path="/privacy" component={PrivacyPolicy} />
-      <Route component={NotFound} />
+      <Route path="/" component={Canvas} />
     </Switch>
   );
 }
