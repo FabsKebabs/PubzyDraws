@@ -1,0 +1,228 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+ 
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+ 
+    --primary: 222.2 70% 50%;
+    --primary-foreground: 210 40% 98%;
+ 
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+ 
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+ 
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+ 
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    
+    --chart-1: 210 100% 60%;
+    --chart-2: 270 100% 60%;
+    --chart-3: 330 100% 60%;
+    --chart-4: 180 100% 60%;
+    --chart-5: 30 100% 60%;
+    
+    --radius: 0.5rem;
+
+    --sidebar-background: 222.2 84% 4.9%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 270 80% 55%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 217.2 32.6% 17.5%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    background-color: #0a0e17;
+    background-image: radial-gradient(circle at 50% 50%, rgba(30, 144, 255, 0.1) 0%, rgba(10, 14, 23, 0) 70%);
+    overflow-x: hidden;
+  }
+}
+
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap');
+}
+
+@font-face {
+  font-family: 'Rajdhani';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+}
+
+@font-face {
+  font-family: 'Audiowide';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+}
+
+/* Cyberpunk styling */
+.font-orbitron {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.font-rajdhani {
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.font-audiowide {
+  font-family: 'Audiowide', cursive;
+}
+
+/* Glow effects */
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #1e90ff, 0 0 20px #1e90ff, 0 0 25px #1e90ff, 0 0 30px #1e90ff, 0 0 35px #1e90ff;
+  }
+  100% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ffe5, 0 0 40px #00ffe5, 0 0 50px #00ffe5, 0 0 60px #00ffe5, 0 0 70px #00ffe5;
+  }
+}
+
+.animate-glow {
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+/* Cyberpunk border effect */
+.cyber-border {
+  position: relative;
+  border: 1px solid rgba(30, 144, 255, 0.3);
+  box-shadow: 0 0 10px rgba(30, 144, 255, 0.5), inset 0 0 5px rgba(30, 144, 255, 0.2);
+}
+
+.cyber-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid rgba(155, 48, 255, 0.3);
+  z-index: -1;
+  animation: glow 2s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+/* Cyberpunk button effects */
+.cyber-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.cyber-btn::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  z-index: -1;
+  background: linear-gradient(90deg, #1e90ff, #9b30ff, #ff1493, #1e90ff);
+  background-size: 400%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cyber-btn:hover::before {
+  opacity: 1;
+  animation: glowingBorder 3s linear infinite;
+}
+
+@keyframes glowingBorder {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 400% 50%; }
+}
+
+/* Card hover effects */
+.cyber-card {
+  transition: all 0.3s ease;
+}
+
+.cyber-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(30, 144, 255, 0.4);
+}
+
+/* Glitch effect for text */
+.glitch {
+  position: relative;
+}
+
+.glitch::before, .glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip: rect(0, 0, 0, 0);
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -1px 0 #ff1493;
+  animation: glitch-anim 2s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -1px 0 #00ffe5;
+  animation: glitch-anim 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% { clip: rect(44px, 9999px, 56px, 0); }
+  5% { clip: rect(75px, 9999px, 87px, 0); }
+  10% { clip: rect(64px, 9999px, 98px, 0); }
+  15% { clip: rect(7px, 9999px, 13px, 0); }
+  20% { clip: rect(53px, 9999px, 56px, 0); }
+  25% { clip: rect(5px, 9999px, 59px, 0); }
+  30% { clip: rect(6px, 9999px, 33px, 0); }
+  35% { clip: rect(82px, 9999px, 59px, 0); }
+  40% { clip: rect(9px, 9999px, 37px, 0); }
+  45% { clip: rect(95px, 9999px, 3px, 0); }
+  50% { clip: rect(67px, 9999px, 70px, 0); }
+  55% { clip: rect(17px, 9999px, 86px, 0); }
+  60% { clip: rect(31px, 9999px, 90px, 0); }
+  65% { clip: rect(53px, 9999px, 31px, 0); }
+  70% { clip: rect(94px, 9999px, 67px, 0); }
+  75% { clip: rect(12px, 9999px, 3px, 0); }
+  80% { clip: rect(31px, 9999px, 88px, 0); }
+  85% { clip: rect(72px, 9999px, 6px, 0); }
+  90% { clip: rect(33px, 9999px, 45px, 0); }
+  95% { clip: rect(79px, 9999px, 78px, 0); }
+  100% { clip: rect(72px, 9999px, 94px, 0); }
+}
